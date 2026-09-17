@@ -33,6 +33,14 @@ const Pedido = () => {
         )
     }
 
+    //FILTER: Seleciona apenas os produtos disponiveis e do carrinho
+    const produtosDisponiveis = items.filter(item =>item.disponivel);
+    const carrinho = items.filter(item.quantidade >0);
+
+    //REDUCE: Calcula a soma dos items (preço * quantidade) e adiciona a taxa de entrega
+    const subTotal = carrinho.reduce((ac,item)=>ac.item.preco * item.quantidade, 0);
+    const total = subTotal >0 ? subTotal + taxaEntrega: 0;
+
 
   return (
     <>
